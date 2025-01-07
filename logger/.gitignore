@@ -1,0 +1,7 @@
+# --- Dirs ---
+build/
+
+# --- Files ---
+compile_commands.json
+program.log
+.run.sh
