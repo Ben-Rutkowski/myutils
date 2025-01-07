@@ -19,6 +19,8 @@ Initialize the log with `Logger_initLog`.
 
 Any translation unit can create a log entry using by including `logger.h` and calling `Logger_log`, `Logger_logFast` or `Logger_logMatrix`.
 
+Use log levels `LOG`, `ERR`, `WAR` or `SUC`.
+
 Call `Logger_tearDown` after finishing using the log.
 
 ###### Functions
@@ -85,7 +87,7 @@ To specify writing more formats, modify the `logMatrixElement` function in `logg
 
 **Arguments**:
 
-- `Logger_LogLevel level`: level of log entry
+- `Logger_LogLevel level`: level of entry
 - `void* array_ptr`: array of elements (*e.g.*, `float[]`)
 - `size_t el_size`: size of each element (*e.g.*, `sizeof(float)`)
 - `size_t M`: number of rows in matrix

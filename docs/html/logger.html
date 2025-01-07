@@ -23,6 +23,8 @@ time.</p>
 <p>Any translation unit can create a log entry using by including
 <code>logger.h</code> and calling <code>Logger_log</code>,
 <code>Logger_logFast</code> or <code>Logger_logMatrix</code>.</p>
+<p>Use log levels <code>LOG</code>, <code>ERR</code>, <code>WAR</code>
+or <code>SUC</code>.</p>
 <p>Call <code>Logger_tearDown</code> after finishing using the log.</p>
 <h6 id="functions">Functions</h6>
 <ul>
@@ -97,7 +99,7 @@ format <code>"%.2f"</code> on each write.)</p>
 <code>logMatrixElement</code> function in <code>logger.c</code>.</p>
 <p><strong>Arguments</strong>:</p>
 <ul>
-<li><code>Logger_LogLevel level</code>: level of log entry</li>
+<li><code>Logger_LogLevel level</code>: level of entry</li>
 <li><code>void* array_ptr</code>: array of elements (<em>e.g.</em>,
 <code>float[]</code>)</li>
 <li><code>size_t el_size</code>: size of each element (<em>e.g.</em>,
