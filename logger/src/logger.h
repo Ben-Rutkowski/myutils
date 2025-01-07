@@ -15,7 +15,7 @@ typedef enum Logger_LogLevel {
 
 // --- Init ---
 void Logger_initLog(const char* filename);
-void Logger_taredownLog();
+void Logger_teardownLog();
 
 // --- Logging ---
 void Logger_log(Logger_LogLevel level, const char* message, ...);

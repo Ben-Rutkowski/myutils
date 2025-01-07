@@ -3,8 +3,114 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h4><a href="index.html">My Utils</a> > Logger</h4>
-
-<h2>Logger</h2>
+<h4 id="my-utils-logger"><a href="index.html">My Utils</a> &gt;
+Logger</h4>
+<h2 id="logger">Logger</h2>
+<p>A simple logging module to be used in C and C++ projects.</p>
+<h6 id="description">Description</h6>
+<p>A program log file is opened at the beginning of the application. The
+application can write to the log. When this is called, a mutex is locked
+during the entry write; only one thread can write to the log at a
+time.</p>
+<p>Each log entry has</p>
+<ul>
+<li><strong>Time-Stamp</strong>: the time since log initialization</li>
+<li><strong>Log Level</strong>: the level of log entry (<em>Log</em>,
+<em>Error</em>, <em>Warning</em>, <em>Success</em>)</li>
+</ul>
+<h6 id="usage">Usage</h6>
+<p>Initialize the log with <code>Logger_initLog</code>.</p>
+<p>Any translation unit can create a log entry using by including
+<code>logger.h</code> and calling <code>Logger_log</code>,
+<code>Logger_logFast</code> or <code>Logger_logMatrix</code>.</p>
+<p>Call <code>Logger_tearDown</code> after finishing using the log.</p>
+<h6 id="functions">Functions</h6>
+<ul>
+<li><a href="#logger_initlog"><strong>Logger_initLog</strong></a>:
+Initializes log</li>
+<li><a
+href="#logger_teardownlog"><strong>Logger_teardownLog</strong></a>:
+Tears down log</li>
+<li><a href="#logger_log"><strong>Logger_log</strong></a>: Write to
+log</li>
+<li><a href="#logger_logfast"><strong>Logger_logFast</strong></a>: Fast
+write to log</li>
+<li><a href="#logger_logmatrix"><strong>Logger_logMatrix</strong></a>:
+Creates log entry with matrix of elements</li>
+</ul>
+<hr />
+<h4 id="logger_initlog">Logger_initLog</h4>
+<p>Initializes log.</p>
+<blockquote>
+<p><code>void Logger_initLog(...);</code></p>
+</blockquote>
+<p>Must be called before using the log; should only be called once.
+Program log remains open until it is torn down.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>const char* filename</code>: name of program log.</li>
+</ul>
+<h4 id="logger_teardownlog">Logger_teardownLog</h4>
+<p>Tears down log.</p>
+<blockquote>
+<p><code>void Logger_teardownLog();</code></p>
+</blockquote>
+<p>Is called at the end of the application; closes the program log.</p>
+<h4 id="logger_log">Logger_log</h4>
+<p>Write to log.</p>
+<blockquote>
+<p><code>void Logger_log(...);</code></p>
+</blockquote>
+<p>Logs a message with C-style formatted arguments. Entry includes a
+time-stamp, log level and message.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>Logger_LogLevel level</code>: level of entry</li>
+<li><code>const char* message</code>: message of entry; can include
+C-style formatting, (<em>e.g.</em>, <code>%i</code>)</li>
+<li><code>...</code>: args for C-style formatting</li>
+</ul>
+<h4 id="logger_logfast">Logger_logFast</h4>
+<p>Fast write to log.</p>
+<blockquote>
+<p><code>void Logger_logFast(...);</code></p>
+</blockquote>
+<p>Logs a message; cannot use C-style formatting.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>const char* message</code>: message to be logged</li>
+</ul>
+<h4 id="logger_logmatrix">Logger_logMatrix</h4>
+<p>Creates a log entry with a matrix of elements.</p>
+<blockquote>
+<p><code>void Logger_logMatrix(...);</code></p>
+</blockquote>
+<p>Logs and message (with C-style formatting) and writes a matrix of
+elements. Takes array and dimensions and writes the array as a matrix.
+Can read the array as either row major or column major.</p>
+<p>Must specify how each element is printed by passing in
+<code>const char* mat_format</code>. (<em>E.g.</em>, the format
+specifier <code>"f"</code> will, by default, print each element of the
+array as a float with two decimal points of precision using the C-style
+format <code>"%.2f"</code> on each write.)</p>
+<p>To specify writing more formats, modify the
+<code>logMatrixElement</code> function in <code>logger.c</code>.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>Logger_LogLevel level</code>: level of log entry</li>
+<li><code>void* array_ptr</code>: array of elements (<em>e.g.</em>,
+<code>float[]</code>)</li>
+<li><code>size_t el_size</code>: size of each element (<em>e.g.</em>,
+<code>sizeof(float)</code>)</li>
+<li><code>size_t M</code>: number of rows in matrix</li>
+<li><code>size_t N</code>: number of columns in matrix</li>
+<li><code>bool column_major</code>: array is read as column major; else,
+read as row major</li>
+<li><code>const char* mat_format,</code>: format for each element write
+(<em>e.g.</em>, <code>"f"</code>)</li>
+<li><code>const char* message</code>: message to be logged; can use
+C-style formatting</li>
+<li><code>...</code>: args for C-style formatting</li>
+</ul>
 </body>
 </html>

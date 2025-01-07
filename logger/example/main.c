@@ -31,5 +31,5 @@ int main(int argc, char** argv) {
     Logger_logMatrix(LOG, vec, sizeof(float), 3, 3, false, "f", "Float matrix in row major");
     Logger_logMatrix(LOG, vec, sizeof(float), 1, 9, false, "f", "Float matrix in as vector");
 
-    Logger_taredownLog();
+    Logger_teardownLog();
 }

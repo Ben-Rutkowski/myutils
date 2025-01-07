@@ -61,7 +61,7 @@ static inline void logHeader(Logger_LogLevel level) {
     fprintf(Logger_log_file, " %s ", level_str);
 }
 
-static inline void Logger_logMatrixElement(const char* format, void* element_ptr) {
+static inline void logMatrixElement(const char* format, void* element_ptr) {
     if (strcmp(format, "i") == 0)
         fprintf(Logger_log_file, "%2i", *(int*)element_ptr);
 
@@ -86,7 +86,7 @@ void Logger_initLog(const char* filename) {
     printf("Log set to %s\n", filename);
 }
 
-void Logger_taredownLog() {
+void Logger_teardownLog() {
     fclose(Logger_log_file);
     Logger_log_file = NULL;
     pthread_mutex_destroy(&Logger_log_mutex);
@@ -149,7 +149,7 @@ void Logger_logMatrix(Logger_LogLevel level,
             if (column_major) id = j*M + i;
             else              id = i*N + j;
 
-            Logger_logMatrixElement(mat_format, array_ptr+(id*el_size));
+            logMatrixElement(mat_format, array_ptr+(id*el_size));
             fprintf(Logger_log_file, " ");
         }
         fprintf(Logger_log_file, "]\n");
