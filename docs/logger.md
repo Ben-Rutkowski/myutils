@@ -1,6 +1,6 @@
 #### [My Utils](index.html) > Logger
 
-## Logger
+## logger
 
 A simple logging module to be used in C and C++ projects.
 

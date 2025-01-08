@@ -1,0 +1,6 @@
+# === Directories ===
+build/
+
+
+# === Files ===
+.run.sh
