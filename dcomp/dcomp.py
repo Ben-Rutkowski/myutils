@@ -13,12 +13,13 @@ class FunctionWrapper:
 
 
     def parseFuncStr(self, func_str):
-        groups = re.search(r"(.*?)\((.*?)\).*", func_str);
-        func_pre = groups.group(1).split(" ")
+        r = re.search(r"(.*?)\((.*?)\).*", func_str);
+        func_pre_str = r.group(1).split(" ")
+        func_arg_str = r.group(2).split(",") if r.group(2) else []
 
-        self.func_type = " ".join(func_pre[0:-1])
-        self.func_name = func_pre[-1]
-        self.func_args = [a.strip() for a in groups.group(2).split(",")]
+        self.func_type = " ".join(func_pre_str[0:-1])
+        self.func_name = func_pre_str[-1]
+        self.func_args = [a.strip() for a in func_arg_str]
 
 
     def genMarkdownEntry(self):
@@ -42,10 +43,9 @@ class FunctionWrapper:
 
 class DocFile:
     def __init__(self, filename):
-        self.lines = []
-        self.func_str = []
-        self.func_wrap = []
         self.header = "#### [Index](index.html) > Sub-Directory"
+        self.lines = []
+        self.func_wrap = []
 
         try:
             with open(filename, "r") as file:
@@ -53,13 +53,14 @@ class DocFile:
         except:
             raise FileNotFoundError("No file with that name.")
 
+        func_str = []
         for i in range(len(self.lines)):
             if ":F:" in self.lines[i]:
                 tag = self.grabTag(i)
                 func = self.grabFunction(i+1)
-                self.func_str.append((tag, func)) 
+                func_str.append((tag, func)) 
 
-        for t in self.func_str:
+        for t in func_str:
             self.func_wrap.append(FunctionWrapper(t))
 
 
