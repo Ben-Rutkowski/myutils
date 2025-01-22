@@ -65,6 +65,8 @@ code {
     /* background-color: #cec9af; */
     padding: 0 0.2em;
     border-radius: 5px;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 code:not(blockquote *) {

@@ -5,5 +5,42 @@
 <body>
 <h4 id="my-utils-dcomp"><a href="index.html">My Utils</a> &gt;
 dcomp</h4>
+<h2 id="dcomp">dcomp</h2>
+<p>Tool for creating documentation on C and C++ objects.</p>
+<h6 id="description">Description</h6>
+<p>Searches through a header file for documentation tags and creates
+markdown document. For each header input, the markdown output will have
+three sections:</p>
+<ul>
+<li><strong>Doc Path Template</strong>: template for a path within
+documents (<em>e.g.</em>, <code>My Utils &gt; dcomp</code>).</li>
+<li><strong>Table of Contents</strong>: a bulletin list of links to each
+code object.</li>
+<li><strong>Object Docs</strong>: a list of blank entries for each code
+object.</li>
+</ul>
+<h6 id="usage">Usage</h6>
+<p>Tag code objects you want to document with a specified comment
+(<em>e.g.</em>, <code>/*:F:*/</code> for a function) before the
+declaration to mark it to be compiled. (These comments can be deleted
+after compilation for readability.) Call <code>dcomp</code> with the
+header file and an output markdown file. Users may add a short
+description after the tag (<em>e.g.</em>
+<code>/*:F: Short desctiption*/</code>) to be used in the Table of
+Contents and Object Docs.</p>
+<ul>
+<li><code>-e</code> or <code>--entry</code>: prints only the
+entries.</li>
+<li><code>-t</code> or <code>--table</code>: prints only the
+tables.</li>
+<li><code>-l</code> or <code>--link</code>: formats the header path so
+output is child of the linked <code>.md</code> file.</li>
+</ul>
+<hr />
+<h2 id="structure">Structure</h2>
+<h4 id="docfile"><a href="docfile.html">DocFile</a></h4>
+<p>A <code>DocFile</code> object is created from reading the source
+code. Every code object in the source file that has been tagged is
+extracted as a string and organized by type.</p>
 </body>
 </html>
