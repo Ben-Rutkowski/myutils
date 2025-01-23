@@ -32,7 +32,7 @@ class FunctionWrapper:
         else:
             entry += "();`\n\n"
 
-        entry += "Function description\n\n"
+        # entry += "Function description\n\n"
         entry += "**Arguments**:\n\n"
 
         for a in self.func_args:
