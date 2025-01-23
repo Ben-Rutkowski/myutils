@@ -65,13 +65,17 @@ class DocFile:
 
 
     def linkPath(self, link_file):
-        try:
-            with open(link_file, "r") as file:
-                path = file.readlines()[0]
-        except:
+        for dir in ["", "docs/"]:
+            try:
+                with open(f"{dir}{link_file}", "r") as file:
+                    path = file.readlines()[0]
+            except:
+                continue
+
+        if path is None:
             raise FileNotFoundError("No file to link to")
 
-        file_re = re.search(r".*/(.*?)\.md", link_file)
+        file_re = re.search(r"([^/]+)\.md", link_file)
         file_name = file_re.group(1) + ".html" if file_re else ""
 
         if not re.search(r"#### \[.*?\]\(index.html\) > .*", path):

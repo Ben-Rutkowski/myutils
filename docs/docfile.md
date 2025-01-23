@@ -30,7 +30,7 @@ Reads a source file and parses it.
 
 #### linkPath
 
-Creates a path for this DocFile that continues the path of the linked doc source.
+Creates a path for this DocFile that continues the path of the linked doc source. Checks the relative path first, then checks `docs/`.
 
 #### grabTag
 

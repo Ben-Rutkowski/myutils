@@ -28,14 +28,19 @@ header file and an output markdown file. Users may add a short
 description after the tag (<em>e.g.</em>
 <code>/*:F: Short desctiption*/</code>) to be used in the Table of
 Contents and Object Entries.</p>
+<p>Basic arugments are passed as file inputs to be created as DocFile
+objects. Options:</p>
 <ul>
 <li><code>-e</code> or <code>--entry</code>: prints only the
 entries.</li>
 <li><code>-t</code> or <code>--table</code>: prints only the
 tables.</li>
-<li><code>-l</code> or <code>--link</code>: formats the header path so
-output is child of the linked <code>.md</code> file.</li>
+<li><code>-l</code> or <code>--link</code>: one argument; formats the
+header path so output is child of the linked <code>.md</code> file.</li>
 </ul>
+<p>All file paths are relative to the current directory that called the
+script. Linked arguemnt paths will check the current directory and then
+check <code>docs/</code>.</p>
 <hr />
 <h2 id="structure">Structure</h2>
 <h4 id="docfile"><a href="docfile.html">DocFile</a></h4>

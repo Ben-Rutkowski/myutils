@@ -14,9 +14,13 @@ Searches through a header file for documentation tags and creates markdown docum
 ###### Usage
 Tag code objects you want to document with a specified comment (*e.g.*, `/*:F:*/` for a function) one line before the declaration to mark it to be compiled. (These comments can be deleted after compilation for readability.) Call `dcomp` with the header file and an output markdown file. Users may add a short description after the tag (*e.g.* `/*:F: Short desctiption*/`) to be used in the Table of Contents and Object Entries.
 
+Basic arugments are passed as file inputs to be created as DocFile objects. Options:
+
 - `-e` or `--entry`: prints only the entries.
 - `-t` or `--table`: prints only the tables.
-- `-l` or `--link`: formats the header path so output is child of the linked `.md` file.
+- `-l` or `--link`: one argument; formats the header path so output is child of the linked `.md` file.
+
+All file paths are relative to the current directory that called the script. Linked arguemnt paths will check the current directory and then check `docs/`.
 
 ---
 
