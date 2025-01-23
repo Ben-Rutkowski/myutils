@@ -6,6 +6,39 @@
 <h4 id="my-utils-dcomp-docfile"><a href="index.html">My Utils</a> &gt;
 <a href="dcomp.html">dcomp</a> &gt; DocFile</h4>
 <h2 id="docfile">DocFile</h2>
-<p>Reads the source document and extracts each tagged code object.</p>
+<p>Parses and stores components from a single source file.</p>
+<h6 id="description">Description</h6>
+<p>Reads a file for tags and creates wrappers for each tagged code
+object. Scans line by line for tagged comments. When a tag is found, it
+extracts description and grabs a code object string starting on the
+following line.</p>
+<p>Each doc page has a path at the top. DocFiles can be linked to a
+selected doc source so that its path continues the path of the linked
+page. <em>E.g.</em>, A page has <code>My Utils &gt; dcomp</code> as a
+path. If a DocFile is linked to that page, the resulting path is
+<code>My Utils &gt; dcomp &gt; Sub-Directory</code>.</p>
+<h6 id="usage">Usage</h6>
+<p>Create a DocFile by passing in a source file. Can generate a
+<em>table</em> or <em>entry</em> using <code>genMarkdownTable</code> or
+<code>genMarkdownEntry</code>. A <em>page</em> contains a path,
+description template, table, and all code object entries. Generate a
+page using <code>genMarkdownPage</code>.</p>
+<hr />
+<h4 id="attributes">Attributes</h4>
+<p>All attributes are strings.</p>
+<ul>
+<li><code>path</code>: path of doc page; is template if not linked.</li>
+<li><code>lines</code>: the lines of source file</li>
+<li><code>func_wrap</code>: wrappers for each tagged function</li>
+</ul>
+<h4 id="init__">__init__</h4>
+<p>Reads a source file and parses it.</p>
+<h4 id="linkpath">linkPath</h4>
+<p>Creates a path for this DocFile that continues the path of the linked
+doc source.</p>
+<h4 id="grabtag">grabTag</h4>
+<p>Extracts the description from the tag at the given line index.</p>
+<h4 id="grabfunction">grabFunction</h4>
+<p>Extracts a function string at the given line index.</p>
 </body>
 </html>

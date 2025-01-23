@@ -12,22 +12,22 @@ dcomp</h4>
 markdown document. For each header input, the markdown output will have
 three sections:</p>
 <ul>
-<li><strong>Doc Path Template</strong>: template for a path within
-documents (<em>e.g.</em>, <code>My Utils &gt; dcomp</code>).</li>
+<li><strong>Doc Path</strong>: path within documents (<em>e.g.</em>,
+<code>My Utils &gt; dcomp</code>).</li>
 <li><strong>Table of Contents</strong>: a bulletin list of links to each
 code object.</li>
-<li><strong>Object Docs</strong>: a list of blank entries for each code
-object.</li>
+<li><strong>Object Entries</strong>: a list of blank entries for each
+code object.</li>
 </ul>
 <h6 id="usage">Usage</h6>
 <p>Tag code objects you want to document with a specified comment
-(<em>e.g.</em>, <code>/*:F:*/</code> for a function) before the
+(<em>e.g.</em>, <code>/*:F:*/</code> for a function) one line before the
 declaration to mark it to be compiled. (These comments can be deleted
 after compilation for readability.) Call <code>dcomp</code> with the
 header file and an output markdown file. Users may add a short
 description after the tag (<em>e.g.</em>
 <code>/*:F: Short desctiption*/</code>) to be used in the Table of
-Contents and Object Docs.</p>
+Contents and Object Entries.</p>
 <ul>
 <li><code>-e</code> or <code>--entry</code>: prints only the
 entries.</li>
@@ -40,7 +40,10 @@ output is child of the linked <code>.md</code> file.</li>
 <h2 id="structure">Structure</h2>
 <h4 id="docfile"><a href="docfile.html">DocFile</a></h4>
 <p>A <code>DocFile</code> object is created from reading the source
-code. Every code object in the source file that has been tagged is
-extracted as a string and organized by type.</p>
+code. For each tagged object, stores a Wrapper object.</p>
+<h4 id="functionwrapper"><a
+href="function_wrapper.html">FunctionWrapper</a></h4>
+<p>A parsed funciton object, contains <em>description</em>, <em>return
+type</em>, <em>name</em>, and <em>arguments</em>.</p>
 </body>
 </html>

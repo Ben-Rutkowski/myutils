@@ -43,7 +43,7 @@ class FunctionWrapper:
 
 class DocFile:
     def __init__(self, filename):
-        self.header = "#### [Index](index.html) > Sub-Directory"
+        self.path = "#### [Index](index.html) > Sub-Directory"
         self.lines = []
         self.func_wrap = []
 
@@ -81,7 +81,7 @@ class DocFile:
         path_front = " ".join(path_split[:-1]).strip()
         path_back = "[" + path_split[-1].strip() + "](" + file_name + ") > Sub-Directory"
 
-        self.header = path_front + " " + path_back
+        self.path = path_front + " " + path_back
 
 
     def grabTag(self, i):
@@ -130,7 +130,7 @@ class DocFile:
 
 
     def genMarkdownPage(self):
-        page_str = self.header + "\n\n"
+        page_str = self.path + "\n\n"
         page_str += "## Sub-Directory\n\nShort Description.\n\n###### Description\n\n###### Usage\n\n"
         page_str += self.genMarkdownTable()
         page_str += "\n---\n\n"
