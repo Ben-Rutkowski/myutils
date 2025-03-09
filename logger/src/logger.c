@@ -149,7 +149,7 @@ void Logger_logMatrix(Logger_LogLevel level,
             if (column_major) id = j*M + i;
             else              id = i*N + j;
 
-            logMatrixElement(mat_format, array_ptr+(id*el_size));
+            logMatrixElement(mat_format, (void*)((uintptr_t)array_ptr+(id*el_size)));
             fprintf(Logger_log_file, " ");
         }
         fprintf(Logger_log_file, "]\n");
