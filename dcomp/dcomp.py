@@ -24,19 +24,20 @@ class FunctionWrapper:
 
     def genMarkdownEntry(self):
         entry = "#### " + self.func_name + "\n"
-        entry += self.tag + "\n\n"
+
+        if self.tag:
+            entry += self.tag + "\n\n"
+        else:
+            entry += "\n"
+
         entry += "> `" + self.func_type + " " + self.func_name
 
         if self.func_args:
-            entry += "(...);`\n\n"
+            entry += "(...);`\n\n**Arguments**:\n\n"
+            for a in self.func_args:
+                entry += "-`" + a + "`:\n"
         else:
-            entry += "();`\n\n"
-
-        # entry += "Function description\n\n"
-        entry += "**Arguments**:\n\n"
-
-        for a in self.func_args:
-            entry += "-`" + a + "`:\n"
+            entry += "();`\n"
 
         return entry
 
